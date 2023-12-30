@@ -1,50 +1,50 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
   var $body,
-        $document,
-        $board,
-        $grid,
-        timer,
-        time,
-        unstarted;
+    $document,
+    $board,
+    $grid,
+    timer,
+    time,
+    unstarted;
 
-    function _init() {
-      // Cache some common DOM queries
-      $document = $(document);
-      $body = $('body');
-      $body.addClass('loaded');
+  function _init() {
+    // Cache some common DOM queries
+    $document = $(document);
+    $body = $('body');
+    $body.addClass('loaded');
 
-      // Start Minesweeper
-      $board = $('#board');
-      $grid = $('#grid');
-      var $timer = $('#timer');
-      var $mineCounter = $('#minecounter');
-      var $levelSelect = $('#level');
-      var levels = {
-        'beginner': '9x9x10',
-        'intermediate': '16x16x44',
-        'expert': '16x30x99'
-      };
-      var level = $levelSelect.val();
-      var levelParams,
-          rows,
-          $rows,
-          columns,
-          cellCount,
-          mines,
-          freeCells,
-          mineTally,
-          pauseTime,
-          beginnerHighScore = 999,
-          intermediateHighScore = 999,
-          expertHighScore = 999;
+    // Start Minesweeper
+    $board = $('#board');
+    $grid = $('#grid');
+    var $timer = $('#timer');
+    var $mineCounter = $('#minecounter');
+    var $levelSelect = $('#level');
+    var levels = {
+      'beginner': '9x9x10',
+      'intermediate': '16x16x44',
+      'expert': '16x30x99'
+    };
+    var level = $levelSelect.val();
+    var levelParams,
+      rows,
+      $rows,
+      columns,
+      cellCount,
+      mines,
+      freeCells,
+      mineTally,
+      pauseTime,
+      beginnerHighScore = 999,
+      intermediateHighScore = 999,
+      expertHighScore = 999;
 
-      var countColors = {0: '', 1: 'blue', 2: 'green', 3: 'red', 4: 'blue-dark', 5: 'maroon', 6: 'turquoise', 7: 'purple', 8: 'gray-dark'};
+    var countColors = {0: '', 1: 'blue', 2: 'green', 3: 'red', 4: 'blue-dark', 5: 'maroon', 6: 'turquoise', 7: 'purple', 8: 'gray-dark'};
 
-      time = 0;
-      timer = false;
-      unstarted = true;
-      var statusIndicator = '<div class="status-indicator"></div>';
+    time = 0;
+    timer = false;
+    unstarted = true;
+    var statusIndicator = '<div class="status-indicator"></div>';
 
       function setLevel(level) {
         levelParams = levels[level];
